@@ -139,10 +139,6 @@ git commit -m "feat: Add new project to portfolio
 - Added XYZ project with description and tech stack
 - Updated project filtering to include new category
 - Optimized project card hover animations
-
-🤖 Generated with [Claude Code](https://claude.ai/code)
-
-Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 #### Commit Message Guidelines:

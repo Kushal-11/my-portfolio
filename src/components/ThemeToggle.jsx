@@ -10,7 +10,6 @@ const ThemeToggle = () => {
   const [currentTheme, setCurrentTheme] = useState('dark');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [transitionData, setTransitionData] = useState({ from: null, to: null, position: null });
-  const [ripples, setRipples] = useState([]);
   const buttonRef = useRef(null);
 
   useEffect(() => {
@@ -19,27 +18,6 @@ const ThemeToggle = () => {
     applyTheme(storedTheme, { animated: false });
   }, []);
 
-  const createRipple = (event) => {
-    const button = event.currentTarget;
-    const rect = button.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    const x = event.clientX - rect.left - size / 2;
-    const y = event.clientY - rect.top - size / 2;
-    
-    const newRipple = {
-      id: Date.now(),
-      x,
-      y,
-      size,
-      color: themes[currentTheme]?.colors.primary || '#EF4444'
-    };
-
-    setRipples(prev => [...prev, newRipple]);
-    
-    setTimeout(() => {
-      setRipples(prev => prev.filter(ripple => ripple.id !== newRipple.id));
-    }, 600);
-  };
 
   const handleThemeChange = (themeKey, event) => {
     if (themeKey === currentTheme) {
@@ -89,11 +67,8 @@ const ThemeToggle = () => {
         ref={buttonRef}
         variant="ghost"
         size="sm"
-        onClick={(e) => {
-          createRipple(e);
-          toggleOpen();
-        }}
-        className="p-2 relative z-50 overflow-hidden"
+        onClick={toggleOpen}
+        className="p-2 relative z-50"
         aria-label="Toggle theme selector"
       >
         <motion.div
@@ -102,21 +77,6 @@ const ThemeToggle = () => {
         >
           <Palette className="w-5 h-5" />
         </motion.div>
-        
-        {/* Ripple effects */}
-        {ripples.map((ripple) => (
-          <div
-            key={ripple.id}
-            className="theme-ripple"
-            style={{
-              left: ripple.x,
-              top: ripple.y,
-              width: ripple.size,
-              height: ripple.size,
-              backgroundColor: ripple.color
-            }}
-          />
-        ))}
       </CustomButton>
 
       {/* Theme Selector Dropdown */}

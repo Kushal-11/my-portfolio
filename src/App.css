@@ -171,6 +171,25 @@ body,
   }
 }
 
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .theme-wave,
+  .theme-ripple {
+    animation: none !important;
+  }
+  
+  .glow-effect {
+    animation: none !important;
+  }
+}
+
 .theme-transition-overlay {
   position: fixed;
   top: 0;

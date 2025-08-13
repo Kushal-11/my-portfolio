@@ -72,7 +72,7 @@ const Navigation = () => {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  className="text-gray-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  className="text-muted-foreground hover:text-foreground px-3 py-2 text-sm font-medium transition-colors duration-200"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -96,7 +96,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white p-2"
+              className="text-muted-foreground hover:text-foreground p-2"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -121,7 +121,7 @@ const Navigation = () => {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  className="text-gray-300 hover:text-white block px-3 py-2 text-base font-medium transition-colors duration-200"
+                  className="text-muted-foreground hover:text-foreground block px-3 py-2 text-base font-medium transition-colors duration-200"
                 >
                   {item.name}
                 </a>

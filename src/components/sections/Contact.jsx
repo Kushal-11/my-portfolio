@@ -153,7 +153,7 @@ const Contact = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                        Name
+                        Name *
                       </label>
                       <input
                         type="text"
@@ -162,14 +162,19 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
+                        aria-describedby="name-help"
+                        aria-invalid={submitError ? "true" : "false"}
                         className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-foreground placeholder:text-muted-foreground"
                         placeholder="Your full name"
                       />
+                      <div id="name-help" className="sr-only">
+                        Enter your full name for contact purposes
+                      </div>
                     </div>
                     
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                        Email
+                        Email *
                       </label>
                       <input
                         type="email"
@@ -178,14 +183,19 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
+                        aria-describedby="email-help"
+                        aria-invalid={submitError ? "true" : "false"}
                         className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-foreground placeholder:text-muted-foreground"
                         placeholder="your.email@example.com"
                       />
+                      <div id="email-help" className="sr-only">
+                        Enter a valid email address for response
+                      </div>
                     </div>
                     
                     <div>
                       <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                        Message
+                        Message *
                       </label>
                       <textarea
                         id="message"
@@ -194,9 +204,14 @@ const Contact = () => {
                         onChange={handleInputChange}
                         required
                         rows={5}
+                        aria-describedby="message-help"
+                        aria-invalid={submitError ? "true" : "false"}
                         className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-foreground resize-none placeholder:text-muted-foreground"
                         placeholder="Tell me about your project or opportunity..."
                       />
+                      <div id="message-help" className="sr-only">
+                        Describe your project, opportunity, or question in detail
+                      </div>
                     </div>
                     
                     <CustomButton
@@ -212,8 +227,10 @@ const Contact = () => {
 
                     {/* Error Message */}
                     {submitError && (
-                      <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
-                        <p className="text-red-500 text-sm">{submitError}</p>
+                      <div role="alert" className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+                        <p className="text-red-500 text-sm">
+                          <strong>Error:</strong> {submitError}
+                        </p>
                       </div>
                     )}
                   </form>
@@ -253,7 +270,7 @@ const Contact = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {contactInfo.map((info, index) => {
+                {contactInfo.map((info) => {
                   const Icon = info.icon;
                   return (
                     <motion.div
@@ -293,7 +310,7 @@ const Contact = () => {
               </CardHeader>
               <CardContent>
                 <div className="flex space-x-4">
-                  {socialLinks.map((social, index) => {
+                  {socialLinks.map((social) => {
                     const Icon = social.icon;
                     return (
                       <motion.a

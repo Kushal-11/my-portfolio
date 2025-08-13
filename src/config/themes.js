@@ -55,23 +55,23 @@ export const themes = {
     class: 'theme-cyberpunk',
     colors: {
       background: '#0D001A',
-      foreground: '#00FFFF',
+      foreground: '#E0F8FF',
       card: '#1A0033',
-      'card-foreground': '#00FFFF',
+      'card-foreground': '#E0F8FF',
       popover: '#1A0033',
-      'popover-foreground': '#00FFFF',
-      primary: '#FF00FF',
+      'popover-foreground': '#E0F8FF',
+      primary: '#FF44FF',
       'primary-foreground': '#000000',
       secondary: '#330066',
-      'secondary-foreground': '#00FFFF',
+      'secondary-foreground': '#E0F8FF',
       muted: '#330066',
-      'muted-foreground': '#9966CC',
-      accent: '#00FFFF',
+      'muted-foreground': '#B8B8FF',
+      accent: '#44FFFF',
       'accent-foreground': '#000000',
       destructive: '#FF0066',
-      border: 'rgba(255, 0, 255, 0.3)',
-      input: 'rgba(0, 255, 255, 0.2)',
-      ring: '#FF00FF'
+      border: 'rgba(255, 68, 255, 0.3)',
+      input: 'rgba(68, 255, 255, 0.2)',
+      ring: '#FF44FF'
     }
   },
   forest: {
