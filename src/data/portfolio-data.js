@@ -9,7 +9,9 @@ export const portfolioData = {
       email: "kushaltherokar1010@gmail.com",
       phone: "+1 628-358-5903",
       linkedin: "https://www.linkedin.com/in/kushal-therokar/",
-      github: "https://github.com/Kushal-11"
+      github: "https://github.com/Kushal-11",
+      devpost: "https://devpost.com/Kushal-11",
+      hackerrank: "https://www.hackerrank.com/profile/Kushal_11"
     },
     stats: [
       { label: "ML accuracy", value: ">95%", description: "Interview tool" },
@@ -159,7 +161,7 @@ export const portfolioData = {
       role: "Data Engineer & Dashboard Developer",
       category: "Data Pipelines",
       github: "https://github.com/Kushal-11/transcript-capstone",
-      demo: "https://transcript-dashboard.shinyapps.io"
+      demo: null
     },
     {
       id: "memewars",
@@ -174,7 +176,7 @@ export const portfolioData = {
       role: "Full-Stack Developer",
       category: "Frontend",
       github: "https://github.com/Kushal-11/memewars",
-      demo: "https://memewars-app.vercel.app"
+      demo: null
     }
   ]
 };

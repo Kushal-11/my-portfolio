@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle, Trophy, Code } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import CustomButton from '../ui/custom-button';
 import { portfolioData } from '../../data/portfolio-data';
+import { config } from '../../config/services';
 
 const Contact = () => {
   const { personal } = portfolioData;
@@ -13,6 +14,8 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,14 +25,41 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulate form submission
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 3000);
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      // Use Formspree endpoint from config
+      const response = await fetch(config.formspree.endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      setSubmitError('Failed to send message. Please try again or email me directly.');
+      console.error('Form submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -63,6 +93,16 @@ const Contact = () => {
       icon: Linkedin,
       label: 'LinkedIn',
       href: personal.contact.linkedin
+    },
+    {
+      icon: Trophy,
+      label: 'DevPost',
+      href: personal.contact.devpost
+    },
+    {
+      icon: Code,
+      label: 'HackerRank',
+      href: personal.contact.hackerrank
     },
     {
       icon: Mail,
@@ -122,7 +162,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-foreground"
+                        className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-foreground placeholder:text-muted-foreground"
                         placeholder="Your full name"
                       />
                     </div>
@@ -138,7 +178,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-foreground"
+                        className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-foreground placeholder:text-muted-foreground"
                         placeholder="your.email@example.com"
                       />
                     </div>
@@ -154,7 +194,7 @@ const Contact = () => {
                         onChange={handleInputChange}
                         required
                         rows={5}
-                        className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-foreground resize-none"
+                        className="w-full px-4 py-3 bg-input border border-border rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 text-foreground resize-none placeholder:text-muted-foreground"
                         placeholder="Tell me about your project or opportunity..."
                       />
                     </div>
@@ -164,10 +204,18 @@ const Contact = () => {
                       variant="primary"
                       size="lg"
                       className="w-full"
+                      disabled={isSubmitting}
                     >
                       <Send className="w-5 h-5 mr-2" />
-                      Send Message
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </CustomButton>
+
+                    {/* Error Message */}
+                    {submitError && (
+                      <div className="mt-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+                        <p className="text-red-500 text-sm">{submitError}</p>
+                      </div>
+                    )}
                   </form>
                 ) : (
                   <motion.div

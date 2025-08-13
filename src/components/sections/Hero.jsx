@@ -89,7 +89,7 @@ const Hero = () => {
               <CustomButton
                 variant="secondary"
                 size="lg"
-                href="/resume.pdf"
+                href="/placeholder.html"
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Download } from 'lucide-react';
 import CustomButton from './ui/custom-button';
+import ThemeToggle from './ThemeToggle';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,12 +82,13 @@ const Navigation = () => {
               <CustomButton
                 variant="primary"
                 size="sm"
-                href="/resume.pdf"
+                href="/placeholder.html"
                 className="ml-4"
               >
                 <Download className="w-4 h-4 mr-2" />
                 Resume
               </CustomButton>
+              <ThemeToggle />
             </div>
           </div>
 
@@ -124,16 +126,19 @@ const Navigation = () => {
                   {item.name}
                 </a>
               ))}
-              <div className="px-3 py-2">
+              <div className="px-3 py-2 space-y-2">
                 <CustomButton
                   variant="primary"
                   size="sm"
-                  href="/resume.pdf"
+                  href="/placeholder.html"
                   className="w-full"
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Resume
                 </CustomButton>
+                <div className="flex justify-center">
+                  <ThemeToggle />
+                </div>
               </div>
             </div>
           </motion.div>

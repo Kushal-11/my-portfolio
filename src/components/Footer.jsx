@@ -1,24 +1,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, Trophy, Code } from 'lucide-react';
+import { portfolioData } from '../data/portfolio-data';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { personal } = portfolioData;
 
   const socialLinks = [
     {
       name: 'GitHub',
-      href: 'https://github.com/Kushal-11',
+      href: personal.contact.github,
       icon: Github
     },
     {
       name: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/kushal-therokar/',
+      href: personal.contact.linkedin,
       icon: Linkedin
     },
     {
+      name: 'DevPost',
+      href: personal.contact.devpost,
+      icon: Trophy
+    },
+    {
+      name: 'HackerRank',
+      href: personal.contact.hackerrank,
+      icon: Code
+    },
+    {
       name: 'Email',
-      href: 'mailto:kushaltherokar1010@gmail.com',
+      href: `mailto:${personal.contact.email}`,
       icon: Mail
     }
   ];
