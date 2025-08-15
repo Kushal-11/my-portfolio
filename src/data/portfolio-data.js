@@ -49,20 +49,22 @@ export const portfolioData = {
       role: "Research Assistant",
       company: "University of the Pacific",
       period: "Jan 2025 – Present",
+      location: "San Francisco, USA",
       achievements: [
-        "Contributing to a book chapter on Explainable AI with cutting-edge research insights",
-        "Implementing reproducible research pipelines for XAI methodologies",
-        "Developing comprehensive evaluation frameworks for model interpretability"
+        "Developed and fine-tuned 10 machine learning models on 6,719 educational data samples, with XGBoost achieving the highest performance at 74.2% R²",
+        "Created an efficient feature selection strategy that cut the feature space by 75% while preserving 94% of model accuracy",
+        "Applied SHAP analysis and partial dependence plots to build an interpretable AI framework that reveals complex feature interactions"
       ]
     },
     {
       role: "AI Researcher",
       company: "Styrk AI",
-      period: "Jan – May 2025",
+      period: "Jan 2025 – May 2025",
+      location: "Remote",
       achievements: [
-        "Conducted LLM and agentic experiments to advance AI capabilities",
-        "Developed evaluation harnesses for measuring AI system performance",
-        "Created deployment sketches for scalable AI solutions"
+        "Conducted comprehensive testing of Styrk AI's 'Armor' defense system across 12 PyTorch-based deep learning models to evaluate adversarial robustness",
+        "Leveraged AWS cloud infrastructure (S3, EC2, SageMaker) to enable scalable model training and deployment workflows",
+        "Collaborated on SBIR/STTR grant writing initiatives to secure research funding for innovative AI security solutions"
       ]
     },
     {
