@@ -345,6 +345,10 @@ const Contact = () => {
                     <span className="text-foreground">Available for new opportunities</span>
                   </div>
                   <div className="flex items-center space-x-2">
+                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <span className="text-foreground">Open to jobs as Data Scientist / AI Engineer</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                     <span className="text-foreground">Open to research collaborations</span>
                   </div>
